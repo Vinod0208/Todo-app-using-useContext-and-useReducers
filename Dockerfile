@@ -1,11 +1,10 @@
-FROM ubuntu
+FROM node:16-alpine AS deps
+
 
 WORKDIR /app
-
-COPY public/ /public
-COPY src/ /src
-COPY package.json /
+COPY package*.json .
 
 RUN npm install
+EXPOSE 3000
    
 CMD ["npm", "start"]
