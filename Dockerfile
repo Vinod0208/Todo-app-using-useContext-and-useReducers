@@ -2,12 +2,10 @@ FROM ubuntu
 
 WORKDIR /app
 
-COPY requirements.txt /app
-COPY devops /app
+COPY public/ /public
+COPY src/ /src
+COPY package.json /
 
-RUN apt-get update && \
-    apt-get install -y node  && \
-    npm install -r requirements.txt 
+RUN npm install
    
-ENTRYPOINT ["node"]
-CMD ["App.js", "runserver", "0.0.0.0:8000"]
+CMD ["npm", "start"]
